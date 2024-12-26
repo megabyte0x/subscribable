@@ -5,16 +5,16 @@ Subscribable = require("subscribable")({
 Counter = Counter or 0
 
 Subscribable.configTopicsAndChecks({
-    'counter', -- topic name
-    function() -- a check function to determine if the event of the occurs & generate a notification payload
-        print("notified!")
-        return { counter = Counter }
-    end
+    ['counter'] = {
+        checkFn = function() return Counter % 2 == 0 end,
+        payloadFn = function() return { counter = Counter } end
+
+    }
 })
 
 function increase()
     Counter = Counter + 1;
-    Subscribable.notifyTopic('counter')
+    Subscribable.checkNotifyTopic('counter')
 end
 
 Handlers.add("increase", increase)
