@@ -12,6 +12,9 @@
 1. Open AOS
 2. Send the Register-Subscription message
     ![Register](./diagrams/register.png)
+
+    If using SQL
+    ![RegisterDB](./diagrams/register_DB.png)
     ```lua
     local json = require('json')
 
@@ -26,6 +29,8 @@
     1. Transfer 1 $0RBT to the **Subscriber Process**
     2. Transfer $0RBT from Subscriber Process to Subscription Process.
         ![Pay-For-Sub](./diagrams/pay-for-sub.png)
+        If using SQL
+        ![Pay-For-Sub-DB](./diagrams/pay-for-sub_DB.png)
         ```lua
         ao.send({
             Target = 0RBT,
